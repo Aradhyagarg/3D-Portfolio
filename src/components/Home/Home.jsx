@@ -4,6 +4,7 @@ import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import moonImage from "../../Images/moon.jpg"
 import venusImage from "../../Images/venus.jpg"
+import spaceImage from "../../Images/space.jpg"
 const Home = () => {
 
   useEffect(() => {
@@ -11,6 +12,7 @@ const Home = () => {
     const textureLoader = new THREE.TextureLoader();
     const moonTexture = textureLoader.load(moonImage);
     const venusTexture = textureLoader.load(venusImage);
+    const spaceTexture = textureLoader.load(spaceImage);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(4, 4, 8);
@@ -36,6 +38,7 @@ const Home = () => {
     scene.add(venus);
     scene.add(pointLight);
     scene.add(pointLight2);
+    scene.background = spaceTexture;
 
     const constSpeed = 0.01;
     window.addEventListener("mousemove", (e) => {
